@@ -5,14 +5,20 @@ import {
   mfRpcClient,
   type RpcInvokeRequest,
   type RpcInvokeResponse,
-} from '@module-federation/mf-rpc';
+} from '@module-federation/doc';
 import type { Contract } from 'remote/rpc-contract';
 
 type RemoteContractVersion = typeof import('remote/rpc-contract').CONTRACT_VERSION;
 
 const CONTRACT_VERSION: RemoteContractVersion = '0.1.0';
 
-const loadBrowserScript = async (url: string, element?: { onload?: (evt: unknown) => void }) => {
+type ScriptElementLike = {
+  src?: string;
+  onload?: (evt: unknown) => void;
+  onerror?: (evt: unknown) => void;
+};
+
+const loadBrowserScript = async (url: string, element?: ScriptElementLike) => {
   const response = await fetch(url);
   const code = await response.text();
   const script = new Script(code, { filename: url });
@@ -25,14 +31,15 @@ const setupDomShim = () => {
     return;
   }
 
-  globalThis.window = globalThis as unknown as Window;
-  globalThis.self = globalThis;
+  const globalWindow = globalThis as unknown as Window & typeof globalThis;
+  globalThis.window = globalWindow;
+  globalThis.self = globalWindow;
   globalThis.HTMLScriptElement = class {} as unknown as typeof HTMLScriptElement;
   globalThis.HTMLLinkElement = class {} as unknown as typeof HTMLLinkElement;
   globalThis.document = {
     defaultView: globalThis,
     head: {
-      appendChild(element: { src?: string; onerror?: (evt: unknown) => void }) {
+      appendChild(element: ScriptElementLike) {
         if (element?.src) {
           loadBrowserScript(element.src, element).catch((error) => {
             element?.onerror?.({ type: 'error', target: element, error });
@@ -83,6 +90,10 @@ const run = async () => {
     CONTRACT_VERSION: string;
     invoke(request: RpcInvokeRequest): Promise<RpcInvokeResponse>;
   }>('remote/rpc-runtime');
+
+  if (!runtime) {
+    throw new Error('Remote runtime not found');
+  }
 
   const api = mfRpcClient<Contract>({
     transport: createInvokeTransport(runtime),

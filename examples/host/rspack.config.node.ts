@@ -12,6 +12,7 @@ export default defineConfig({
   target: 'async-node',
   output: {
     path: path.resolve(__dirname, 'dist-node'),
+    publicPath: 'auto',
     clean: true,
     library: {
       type: 'commonjs-module',

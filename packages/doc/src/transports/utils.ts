@@ -5,7 +5,7 @@ export type FetchLike = (
   init?: RequestInit
 ) => Promise<Response>;
 
-export const DEFAULT_BASE_URL = 'http://mf-rpc.local';
+export const DEFAULT_BASE_URL = 'http://mf-doc.local';
 
 const appendQueryValue = (searchParams: URLSearchParams, key: string, value: unknown) => {
   if (value === undefined || value === null) {

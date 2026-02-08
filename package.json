@@ -7,10 +7,10 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
-    "test:e2e": "pnpm --filter @mf-rpc/remote-example build && pnpm --filter @mf-rpc/host-example build:node && node scripts/e2e.cjs"
+    "test:e2e": "pnpm --filter @module-federation/doc-remote-example build && pnpm --filter @module-federation/doc-host-example build:node && node scripts/e2e.cjs"
   },
   "devDependencies": {
-    "@module-federation/mf-rpc": "workspace:*",
+    "@module-federation/doc": "workspace:*",
     "@module-federation/node": "^2.7.31",
     "@module-federation/runtime": "^2.0.0",
     "@types/node": "^20.19.33",

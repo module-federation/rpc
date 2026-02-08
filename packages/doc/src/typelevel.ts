@@ -90,16 +90,29 @@ type MethodCall<Method extends RpcMethod, PathParams> =
     ? (options?: RpcRequestOptions<Method, PathParams>) => Promise<RpcResponseFor<Method>>
     : (options: RpcRequestOptions<Method, PathParams>) => Promise<RpcResponseFor<Method>>;
 
+type ParamStepCall<
+  Node,
+  Segment extends DynamicChildKeys<Node>,
+  PathParams
+> = RequiredKeys<SegmentParam<ChildNode<Node, Segment>, Segment>> extends never
+  ? (
+      params?: SegmentParam<ChildNode<Node, Segment>, Segment>
+    ) => RpcProxy<
+      ChildNode<Node, Segment>,
+      Simplify<PathParams & SegmentParam<ChildNode<Node, Segment>, Segment>>
+    >
+  : (
+      params: SegmentParam<ChildNode<Node, Segment>, Segment>
+    ) => RpcProxy<
+      ChildNode<Node, Segment>,
+      Simplify<PathParams & SegmentParam<ChildNode<Node, Segment>, Segment>>
+    >;
+
 type ParamStep<Node, PathParams> = DynamicChildKeys<Node> extends never
   ? {}
   : UnionToIntersection<
       {
-        [Segment in DynamicChildKeys<Node>]: (
-          params: SegmentParam<ChildNode<Node, Segment>, Segment>
-        ) => RpcProxy<
-          ChildNode<Node, Segment>,
-          Simplify<PathParams & SegmentParam<ChildNode<Node, Segment>, Segment>>
-        >;
+        [Segment in DynamicChildKeys<Node>]: ParamStepCall<Node, Segment, PathParams>;
       }[DynamicChildKeys<Node>]
     >;
 

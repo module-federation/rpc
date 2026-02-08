@@ -4,7 +4,7 @@ import {
   mfRpcClient,
   type RpcInvokeRequest,
   type RpcInvokeResponse,
-} from '@module-federation/mf-rpc';
+} from '@module-federation/doc';
 import type { Contract } from 'remote/rpc-contract';
 
 type RemoteContractVersion = typeof import('remote/rpc-contract').CONTRACT_VERSION;
@@ -27,6 +27,10 @@ const run = async () => {
     CONTRACT_VERSION: string;
     invoke(request: RpcInvokeRequest): Promise<RpcInvokeResponse>;
   }>('remote/rpc-runtime');
+
+  if (!runtime) {
+    throw new Error('Remote runtime not found');
+  }
 
   const api = mfRpcClient<Contract>({
     transport: createInvokeTransport(runtime),

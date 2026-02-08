@@ -58,4 +58,4 @@ type OptionalContract = {
 
 type OptionalClient = RpcTreaty.Create<OptionalContract>;
 type OptionalParams = Parameters<OptionalClient['posts']>[0];
-type _OptionalParams = Expect<Equal<OptionalParams, { slug?: string }>>;
+type _OptionalParams = Expect<Equal<OptionalParams, { slug?: string } | undefined>>;

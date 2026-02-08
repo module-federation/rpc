@@ -1,4 +1,4 @@
-import type { RpcInvokeRequest, RpcInvokeResponse, RpcRuntime } from '@module-federation/mf-rpc';
+import type { RpcInvokeRequest, RpcInvokeResponse, RpcRuntime } from '@module-federation/doc';
 import { CONTRACT_VERSION } from './contractVersion';
 
 type User = { id: string; name: string };
