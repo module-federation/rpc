@@ -8,9 +8,9 @@ importers:
 
   .:
     devDependencies:
-      '@module-federation/mf-rpc':
+      '@module-federation/doc':
         specifier: workspace:*
-        version: link:packages/mf-rpc
+        version: link:packages/doc
       '@module-federation/node':
         specifier: ^2.7.31
         version: 2.7.31(typescript@5.9.3)(webpack@5.105.0)
@@ -35,9 +35,9 @@ importers:
 
   examples/host:
     dependencies:
-      '@module-federation/mf-rpc':
+      '@module-federation/doc':
         specifier: workspace:*
-        version: link:../../packages/mf-rpc
+        version: link:../../packages/doc
       '@module-federation/runtime':
         specifier: ^2.0.0
         version: 2.0.0
@@ -57,9 +57,9 @@ importers:
 
   examples/remote:
     dependencies:
-      '@module-federation/mf-rpc':
+      '@module-federation/doc':
         specifier: workspace:*
-        version: link:../../packages/mf-rpc
+        version: link:../../packages/doc
     devDependencies:
       '@module-federation/dts-plugin':
         specifier: ^2.0.0
@@ -74,7 +74,7 @@ importers:
         specifier: ^1.7.5
         version: 1.7.5
 
-  packages/mf-rpc: {}
+  packages/doc: {}
 
 packages:
 

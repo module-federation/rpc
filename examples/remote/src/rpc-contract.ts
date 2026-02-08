@@ -1,7 +1,6 @@
-import type { RpcContract } from '@module-federation/mf-rpc';
 import { CONTRACT_VERSION } from './contractVersion';
 
-export type Contract = RpcContract & {
+export type Contract = {
   users: {
     post: {
       body: { name: string };

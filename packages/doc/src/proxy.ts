@@ -95,7 +95,7 @@ export const assertContractVersion = (
 
   const target = remoteName ? ` for ${remoteName}` : '';
   throw new Error(
-    `MF RPC contract version mismatch${target}. Expected "${expected}", received "${actual}".`
+    `Module Federation Doc contract version mismatch${target}. Expected "${expected}", received "${actual}".`
   );
 };
 
@@ -137,7 +137,7 @@ const buildParamStep = (
 
   if (keys.length > 1) {
     throw new Error(
-      `MF RPC param step expects a single param key, received ${keys.length}.`
+      `Module Federation Doc param step expects a single param key, received ${keys.length}.`
     );
   }
 

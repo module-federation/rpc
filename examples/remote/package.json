@@ -1,17 +1,17 @@
 {
-  "name": "@mf-rpc/remote-example",
+  "name": "@module-federation/doc-remote-example",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "prebuild": "pnpm --filter @module-federation/mf-rpc build",
+    "prebuild": "pnpm --filter @module-federation/doc build",
     "build:node": "rspack build -c rspack.config.node.ts",
     "build": "rspack build",
     "dev": "rspack dev",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@module-federation/mf-rpc": "workspace:*"
+    "@module-federation/doc": "workspace:*"
   },
   "devDependencies": {
     "@module-federation/dts-plugin": "^2.0.0",
