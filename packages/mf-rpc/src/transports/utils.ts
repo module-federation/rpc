@@ -1,4 +1,4 @@
-import type { RpcInvokeRequest, RpcInvokeResponse } from '../types';
+import type { RpcInvokeRequest, RpcInvokeResponse } from '../types.js';
 
 export type FetchLike = (
   input: RequestInfo | URL,

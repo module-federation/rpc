@@ -4,8 +4,8 @@ import type {
   RpcInvokeRequest,
   RpcResponse,
   Transformer,
-} from './types';
-import type { RpcTreaty } from './typelevel';
+} from './types.js';
+import type { RpcTreaty } from './typelevel.js';
 
 const DEFAULT_TRANSFORMER: Transformer = {
   serialize: (data) => data,

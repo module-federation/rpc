@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "prebuild": "pnpm --filter @module-federation/mf-rpc build",
+    "build:node": "rspack build -c rspack.config.node.ts",
     "build": "rspack build",
     "dev": "rspack dev",
     "typecheck": "tsc -p tsconfig.json --noEmit"

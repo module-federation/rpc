@@ -9,5 +9,5 @@
       "*": ["./@mf-types/*"]
     }
   },
-  "include": ["src", "rspack.config.ts"]
+  "include": ["src", "rspack.config.ts", "rspack.config.node.ts"]
 }

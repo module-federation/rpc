@@ -1,10 +1,10 @@
-import type { RpcInvokeResponse, RpcTransport } from '../types';
+import type { RpcInvokeResponse, RpcTransport } from '../types.js';
 import {
   DEFAULT_BASE_URL,
   buildRequestInit,
   buildUrl,
   responseToInvokeResponse,
-} from './utils';
+} from './utils.js';
 
 export type HandleRuntime = {
   handle(request: Request): Promise<Response>;

@@ -1,4 +1,4 @@
-import type { RpcRuntime, RpcTransport } from '../types';
+import type { RpcRuntime, RpcTransport } from '../types.js';
 
 export const createInvokeTransport = (runtime: RpcRuntime): RpcTransport => ({
   contractVersion: runtime.CONTRACT_VERSION,

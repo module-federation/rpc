@@ -1,16 +1,21 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@rspack/cli';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REMOTE_PUBLIC_PATH = process.env.REMOTE_PUBLIC_PATH ?? 'http://localhost:3001/';
 
 export default defineConfig({
   entry: './src/index.ts',
+  target: 'async-node',
   output: {
+    path: path.resolve(__dirname, 'dist-node'),
     publicPath: REMOTE_PUBLIC_PATH,
     clean: true,
-  },
-  devServer: {
-    port: 3001,
+    library: {
+      type: 'commonjs-module',
+    },
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -35,6 +40,7 @@ export default defineConfig({
     new ModuleFederationPlugin({
       name: 'remote',
       filename: 'remoteEntry.js',
+      library: { type: 'commonjs-module' },
       exposes: {
         './rpc-contract': './src/rpc-contract.ts',
         './rpc-runtime': './src/rpc-runtime.ts',

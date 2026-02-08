@@ -1,4 +1,4 @@
-import type { HttpMethod, RpcMethod, RpcResponse } from './types';
+import type { HttpMethod, RpcMethod, RpcResponse } from './types.js';
 
 type Simplify<T> = { [K in keyof T]: T[K] } & {};
 

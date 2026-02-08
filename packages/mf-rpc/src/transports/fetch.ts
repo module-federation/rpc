@@ -1,5 +1,10 @@
-import type { RpcInvokeResponse, RpcTransport } from '../types';
-import { buildRequestInit, buildUrl, responseToInvokeResponse, type FetchLike } from './utils';
+import type { RpcInvokeResponse, RpcTransport } from '../types.js';
+import {
+  buildRequestInit,
+  buildUrl,
+  responseToInvokeResponse,
+  type FetchLike,
+} from './utils.js';
 
 export type FetchTransportOptions = {
   fetch?: FetchLike;
