@@ -35,6 +35,9 @@ export default defineConfig({
       remotes: {
         remote: 'remote@http://localhost:3001/remoteEntry.js',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       dts: {
         consumeTypes: true,
       },

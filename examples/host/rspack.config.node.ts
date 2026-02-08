@@ -47,6 +47,9 @@ export default defineConfig({
       remoteType: 'script',
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       library: { type: 'commonjs-module' },
+      experiments: {
+        asyncStartup: true,
+      },
       dts: {
         consumeTypes: true,
       },

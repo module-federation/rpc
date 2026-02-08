@@ -41,6 +41,9 @@ export default defineConfig({
       name: 'remote',
       filename: 'remoteEntry.js',
       library: { type: 'commonjs-module' },
+      experiments: {
+        asyncStartup: true,
+      },
       exposes: {
         './rpc-contract': './src/rpc-contract.ts',
         './rpc-runtime': './src/rpc-runtime.ts',

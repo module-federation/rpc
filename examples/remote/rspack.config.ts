@@ -35,6 +35,9 @@ export default defineConfig({
     new ModuleFederationPlugin({
       name: 'remote',
       filename: 'remoteEntry.js',
+      experiments: {
+        asyncStartup: true,
+      },
       exposes: {
         './rpc-contract': './src/rpc-contract.ts',
         './rpc-runtime': './src/rpc-runtime.ts',
