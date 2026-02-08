@@ -103,22 +103,20 @@ type ParamStep<Node, PathParams> = DynamicChildKeys<Node> extends never
       }[DynamicChildKeys<Node>]
     >;
 
-export type RpcProxy<Node, PathParams> = Simplify<
-  {
-    [Method in MethodKeys<Node>]: Node[Method] extends RpcMethod
-      ? MethodCall<Node[Method], PathParams>
-      : never;
-  } & {
-    [Segment in StaticChildKeys<Node>]: RpcProxy<ChildNode<Node, Segment>, PathParams>;
-  } & {
-    [Segment in DynamicChildKeys<Node>]: RpcProxy<
-      ChildNode<Node, Segment>,
-      Simplify<PathParams & SegmentParam<ChildNode<Node, Segment>, Segment>>
-    >;
-  } & ParamStep<Node, PathParams> & {
-    then?: never;
-  }
->;
+export type RpcProxy<Node, PathParams> = {
+  [Method in MethodKeys<Node>]: Node[Method] extends RpcMethod
+    ? MethodCall<Node[Method], PathParams>
+    : never;
+} & {
+  [Segment in StaticChildKeys<Node>]: RpcProxy<ChildNode<Node, Segment>, PathParams>;
+} & {
+  [Segment in DynamicChildKeys<Node>]: RpcProxy<
+    ChildNode<Node, Segment>,
+    Simplify<PathParams & SegmentParam<ChildNode<Node, Segment>, Segment>>
+  >;
+} & ParamStep<Node, PathParams> & {
+  then?: never;
+};
 
 export namespace RpcTreaty {
   export type Create<Contract> = RpcProxy<Contract, {}>;

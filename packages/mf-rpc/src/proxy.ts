@@ -142,6 +142,10 @@ const buildParamStep = (
   }
 
   const key = keys[0];
+  if (!key) {
+    return createRecursiveProxy(context, handler);
+  }
+
   return createRecursiveProxy(
     {
       segments: [...context.segments, `:${key}`],
