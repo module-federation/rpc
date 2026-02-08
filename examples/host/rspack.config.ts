@@ -1,5 +1,6 @@
 import { defineConfig } from '@rspack/cli';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
+import HtmlRspackPlugin from '@rspack/plugin-html';
 
 export default defineConfig({
   entry: './src/index.ts',
@@ -41,6 +42,9 @@ export default defineConfig({
       dts: {
         consumeTypes: true,
       },
+    }),
+    new HtmlRspackPlugin({
+      template: './public/index.html',
     }),
   ],
 });

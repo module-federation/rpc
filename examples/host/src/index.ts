@@ -34,6 +34,12 @@ const run = async () => {
   });
 
   const response = await api.users({ id: '1' }).get();
+  if (typeof document !== 'undefined') {
+    const output = document.getElementById('rpc-output');
+    if (output) {
+      output.textContent = JSON.stringify(response, null, 2);
+    }
+  }
   console.log('RPC response', response);
 };
 
