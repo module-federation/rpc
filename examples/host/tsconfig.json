@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./@mf-types/*"]
+    },
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": ["src", "rspack.config.ts", "rspack.config.node.ts"]
+}

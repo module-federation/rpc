@@ -1,0 +1,23 @@
+{
+  "name": "@module-federation/doc-host-example",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "prebuild": "pnpm --filter @module-federation/doc build",
+    "build:node": "rspack build -c rspack.config.node.ts",
+    "build": "rspack build",
+    "dev": "rspack dev",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@module-federation/doc": "workspace:*",
+    "@module-federation/runtime": "^2.0.0"
+  },
+  "devDependencies": {
+    "@module-federation/dts-plugin": "^2.0.0",
+    "@module-federation/enhanced": "^2.0.0",
+    "@rspack/cli": "^1.7.5",
+    "@rspack/core": "^1.7.5"
+  }
+}
