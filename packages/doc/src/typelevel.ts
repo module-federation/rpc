@@ -50,6 +50,7 @@ type SegmentParam<Node, Segment extends string> = Segment extends `:${infer Name
   ? { [Key in Name]: ParamTypeFromMethods<Node, Name> extends never ? string : ParamTypeFromMethods<Node, Name> }
   : {};
 
+
 type MergeParams<PathParams, MethodParams> = [MethodParams] extends [undefined]
   ? PathParams
   : [PathParams] extends [undefined]

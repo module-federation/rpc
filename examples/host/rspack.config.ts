@@ -1,6 +1,6 @@
 import { defineConfig } from '@rspack/cli';
+import { HtmlRspackPlugin } from '@rspack/core';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
-import HtmlRspackPlugin from '@rspack/plugin-html';
 
 export default defineConfig({
   entry: './src/index.ts',
